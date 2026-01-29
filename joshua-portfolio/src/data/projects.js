@@ -14,7 +14,7 @@ export const projects = [
       "Admin dashboard for management",
       "Responsive mobile-first design"
     ],
-    youtubeId: "Oa_RSwwpPaA", // YouTube video ID
+    youtubeId: "rF3viEQlD0A", // YouTube video ID
     githubUrl: "https://github.com/1Joshie7/online-shop",
     liveUrl: null,
     status: "completed",
@@ -22,7 +22,11 @@ export const projects = [
     images: [
       "/assets/images/projects/p1.jpg",
       "/assets/images/projects/p2.jpg",
-      "/assets/images/projects/p3.jpg"
+      "/assets/images/projects/p3.jpg",
+       "/assets/images/projects/p4.jpg",
+      "/assets/images/projects/p5.jpg",
+      "/assets/images/projects/p6.jpg",
+       "/assets/images/projects/p7.jpg",
     ],
     challenges: [
       "Integrated AI API while maintaining fast page loads",
@@ -47,7 +51,7 @@ export const projects = [
       "Admin dashboard"
     ],
     images: [
-      "/assets/images/projects/p4.jpg"
+
     ],
     youtubeId: "I-QfPUz1es8", // YouTube video ID
     liveUrl: "https://mtd-zufy.onrender.com",
