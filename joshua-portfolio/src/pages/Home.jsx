@@ -82,13 +82,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-16"
           >
-            <a 
-              href="/projects" 
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300"
-            >
-              View All Projects
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
-            </a>
+
             <p className="text-gray-500 mt-4 text-sm">3 of {projects.length} projects shown</p>
           </motion.div>
         </div>

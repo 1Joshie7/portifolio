@@ -178,7 +178,7 @@ export default function Hero() {
             >
               <p className="text-gray-600 mb-4 font-medium">Tech I work with:</p>
               <div className="flex flex-wrap gap-2">
-                {['Django', 'React', 'Node.js', 'Python', 'JavaScript', 'PostgreSQL', 'TailwindCSS', 'Docker'].map((tech, index) => (
+                {['Django', 'React', 'Node.js', 'Python', 'JavaScript', 'PostgreSQL', 'TailwindCSS'].map((tech, index) => (
                   <motion.span
                     key={tech}
                     className="bg-white px-3 py-1.5 rounded-full text-sm shadow-sm border border-gray-200 hover:border-blue-300 transition-colors"

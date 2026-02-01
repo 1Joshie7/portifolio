@@ -21,7 +21,7 @@ export default function ProjectCard({ project, onVideoClick, index }) {
       
       <div className="relative bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 group-hover:border-blue-300 transition-all duration-300">
         
-        {/* Image/Video Thumbnail */}
+        {/* Image/Video Thuuuuuuuumbnail */}
         <div className="relative h-48 overflow-hidden">
           {project.youtubeId ? (
             <img 

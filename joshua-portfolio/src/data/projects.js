@@ -53,10 +53,10 @@ export const projects = [
     images: [
 
     ],
-    youtubeId: "I-QfPUz1es8", // YouTube video ID
+    youtubeId: "", // YouTube video ID
     liveUrl: "https://mtd-zufy.onrender.com",
     githubUrl: "https://github.com/1Joshie7/meet-the-doctor",
-    status: "completed",
+    status: "progress",
     category: "full-stack",
     date: "Dec 2024"
   },
@@ -75,11 +75,59 @@ export const projects = [
       "Real-time notifications"
     ],
     images: [], // Add images if you have more
-    youtubeId: "ShZ978fBl6Y", // YouTube video ID
+    youtubeId: "", // YouTube video ID
     liveUrl: "https://u-find.vercel.app/seller/login",
     githubUrl: "https://github.com/1Joshie7/u-finder",
-    status: "completed",
+    status: "completed adding more features",
+    category: "full-stack",
+    date: "dec 2024"
+  },
+
+  {
+    id: 4,
+    title: "store",
+    subtitle: "online chat store",
+    description: "Platform connecting buyers  sellers using and enabling them to communicate with each other using a whatsapp chat feature.",
+    longDescription: "Built an online platform for  connecting buyers  sellers using and enabling them to communicate with each other using a whatsapp chat feature.",
+    techStack: ["Django templates", "Django " , "Django_rest_framework"],
+    features: [
+      "online store",
+      "Seller registration and management",
+      "Product listings with images",
+      "User authentication",
+      "whatsapp chat feature",
+      "add , delete, update products",
+    ],
+    images: [], // Add images if you have more
+    youtubeId: "", // YouTube video ID
+    liveUrl: "",
+    githubUrl: "",
+    status: " nearly completed",
     category: "full-stack",
     date: "Nov 2024"
-  }
+},
+
+  {
+    id: 5,
+    title: "ai marking assistant",
+    subtitle: "online ai exam and test marking assistant",
+    description: "helps lecturers and teacher in setting exam questions and marking them and grading. ",
+    longDescription: "Built an online platform which allows lecturers and teacher to create account, set exams/test and give answers and tells ai to mark according answers which are relevent to the given ones then marks and asses the student's performance and publishes it to his/her dashboard.",
+    techStack: ["React","chatgpt api","sqllite database", "Django " , "Django_rest_framework"],
+    features: [
+      "online ai_exam_marker",
+      "profile creation student / lecturer",
+      "User authentication",
+      "set exams / test and publish them",
+      "Enroll to the exam / test ",
+      "add , delete, update exam",
+    ],
+    images: [], // Add images if you have more
+    youtubeId: "", // YouTube video ID
+    liveUrl: "",
+    githubUrl: "",
+    status: "progress",
+    category: "full-stack",
+    date: "jan 2026"
+}
 ];

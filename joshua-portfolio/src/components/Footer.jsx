@@ -176,17 +176,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="mt-8 pt-8 border-t border-gray-800"
         >
-          <p className="text-gray-500 text-sm mb-4 text-center">Built with:</p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite', 'Lucide Icons'].map((tech, index) => (
-              <span 
-                key={tech}
-                className="bg-gray-800 text-gray-300 text-xs px-3 py-1.5 rounded-full border border-gray-700"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+
         </motion.div>
       </div>
     </footer>
