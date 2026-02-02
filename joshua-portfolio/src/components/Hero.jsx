@@ -4,7 +4,7 @@ import { socialLinks } from '../data/social';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Profile Image with SLOWER Animation */}
@@ -22,10 +22,10 @@ export default function Hero() {
               <img 
                 src="/assets/images/profile.jpeg" 
                 alt="Joshua Tevera"
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-2xl mx-auto"
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-2xl mx-auto"
               />
               <motion.div 
-                className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+                className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
@@ -51,8 +51,8 @@ export default function Hero() {
                 ease: "easeOut"
               }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Joshua Tevera</span>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">Joshua Tevera</span>
               </h1>
             </motion.div>
             
@@ -65,7 +65,7 @@ export default function Hero() {
                 ease: "easeOut"
               }}
             >
-              <h2 className="text-2xl md:text-3xl text-gray-700 mb-6">
+              <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-6">
                 Full-Stack Developer & Software Engineering Student
               </h2>
             </motion.div>
@@ -79,7 +79,7 @@ export default function Hero() {
                 ease: "easeOut"
               }}
             >
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed">
                 I build scalable web applications with Django, React, and Node.js. 
                 Passionate about solving real-world problems in healthcare, e-commerce, 
                 and education through innovative technology solutions.
@@ -97,31 +97,31 @@ export default function Hero() {
               className="flex flex-wrap gap-4 mb-8"
             >
               <motion.div 
-                className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100"
+                className="flex items-center gap-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700"
                 whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-gray-700">Open to opportunities</span>
+                <span className="text-gray-700 dark:text-gray-300">Open to opportunities</span>
               </motion.div>
               <motion.div 
-                className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100"
+                className="flex items-center gap-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700"
                 whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span className="text-gray-700">Harare, Zimbabwe</span>
+                <span className="text-gray-700 dark:text-gray-300">Harare, Zimbabwe</span>
               </motion.div>
               <motion.a 
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all"
+                className="flex items-center gap-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
                 whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="w-2 h-2 bg-gray-800 rounded-full"></div>
-                <span className="text-gray-700">GitHub: 1Joshie7</span>
+                <div className="w-2 h-2 bg-gray-800 dark:bg-gray-300 rounded-full"></div>
+                <span className="text-gray-700 dark:text-gray-300">GitHub: 1Joshie7</span>
               </motion.a>
             </motion.div>
             
@@ -158,8 +158,8 @@ export default function Hero() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center gap-2"
-                whileHover={{ scale: 1.05, backgroundColor: "#111827" }}
+                className="px-6 py-3 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -176,12 +176,12 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 1.6 }}
               className="mt-12"
             >
-              <p className="text-gray-600 mb-4 font-medium">Tech I work with:</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 font-medium">Tech I work with:</p>
               <div className="flex flex-wrap gap-2">
                 {['Django', 'React', 'Node.js', 'Python', 'JavaScript', 'PostgreSQL', 'TailwindCSS'].map((tech, index) => (
                   <motion.span
                     key={tech}
-                    className="bg-white px-3 py-1.5 rounded-full text-sm shadow-sm border border-gray-200 hover:border-blue-300 transition-colors"
+                    className="bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full text-sm shadow-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 transition-colors"
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ 

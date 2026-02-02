@@ -56,8 +56,8 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <Mail className="text-blue-600" size={24} />,
-      bg: "bg-blue-100",
+      icon: <Mail className="text-blue-600 dark:text-blue-400" size={24} />,
+      bg: "bg-blue-100 dark:bg-blue-900/30",
       title: "Email",
       value: socialLinks.email,
       link: `mailto:${socialLinks.email}`,
@@ -65,8 +65,8 @@ export default function Contact() {
       color: "blue"
     },
     {
-      icon: <Phone className="text-green-600" size={24} />,
-      bg: "bg-green-100",
+      icon: <Phone className="text-green-600 dark:text-green-400" size={24} />,
+      bg: "bg-green-100 dark:bg-green-900/30",
       title: "Phone",
       value: socialLinks.phone,
       link: `tel:${socialLinks.phone}`,
@@ -74,16 +74,16 @@ export default function Contact() {
       color: "green"
     },
     {
-      icon: <MapPin className="text-purple-600" size={24} />,
-      bg: "bg-purple-100",
+      icon: <MapPin className="text-purple-600 dark:text-purple-400" size={24} />,
+      bg: "bg-purple-100 dark:bg-purple-900/30",
       title: "Location",
       value: socialLinks.location,
       description: "Open to remote opportunities",
       color: "purple"
     },
     {
-      icon: <Clock className="text-orange-600" size={24} />,
-      bg: "bg-orange-100",
+      icon: <Clock className="text-orange-600 dark:text-orange-400" size={24} />,
+      bg: "bg-orange-100 dark:bg-orange-900/30",
       title: "Response Time",
       value: "Within 24 hours",
       description: "Usually much faster",
@@ -93,19 +93,19 @@ export default function Contact() {
 
   const inquiryTypes = [
     {
-      icon: <Code2 className="text-blue-600" size={20} />,
+      icon: <Code2 className="text-blue-600 dark:text-blue-400" size={20} />,
       title: "Full-Stack Development",
       description: "Custom web applications, API development, system architecture",
       color: "blue"
     },
     {
-      icon: <Brain className="text-green-600" size={20} />,
+      icon: <Brain className="text-green-600 dark:text-green-400" size={20} />,
       title: "AI Integration",
       description: "AI-powered features, LLM implementation, intelligent systems",
       color: "green"
     },
     {
-      icon: <Briefcase className="text-purple-600" size={20} />,
+      icon: <Briefcase className="text-purple-600 dark:text-purple-400" size={20} />,
       title: "Technical Consultation",
       description: "Code review, architecture advice, technology stack guidance",
       color: "purple"
@@ -113,7 +113,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="pt-24 pb-20 min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <div className="pt-24 pb-20 min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
       <div className="container mx-auto px-6">
         
         {/* Header */}
@@ -127,7 +127,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full mb-6 shadow-lg"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white px-6 py-3 rounded-full mb-6 shadow-lg"
           >
             <MessageSquare size={20} />
             <span className="font-medium">Get in Touch</span>
@@ -137,16 +137,16 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
-            Let's Build Something <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Amazing</span>
+            Let's Build Something <span className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">Amazing</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 leading-relaxed"
+            className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
           >
             Whether you have a project in mind, need technical consultation, or want to discuss 
             opportunities, I'm always open to meaningful conversations about technology and innovation.
@@ -161,14 +161,14 @@ export default function Contact() {
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 className="mt-8 mx-auto max-w-md"
               >
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 shadow-lg">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-700 rounded-2xl p-6 shadow-lg">
                   <div className="flex items-center gap-4">
-                    <div className="bg-green-100 p-3 rounded-full">
-                      <CheckCircle className="text-green-600" size={24} />
+                    <div className="bg-green-100 dark:bg-green-900/50 p-3 rounded-full">
+                      <CheckCircle className="text-green-600 dark:text-green-400" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-green-900 text-lg">Message Sent Successfully!</h3>
-                      <p className="text-green-700">I'll get back to you within 24 hours.</p>
+                      <h3 className="font-bold text-green-900 dark:text-green-300 text-lg">Message Sent Successfully!</h3>
+                      <p className="text-green-700 dark:text-green-400">I'll get back to you within 24 hours.</p>
                     </div>
                   </div>
                 </div>
@@ -186,12 +186,12 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-1"
           >
-            <div className="bg-gradient-to-b from-white to-gray-50 rounded-3xl shadow-2xl p-8 border border-gray-200 sticky top-32">
+            <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-200 dark:border-gray-700 sticky top-32">
               <div className="flex items-center gap-3 mb-10">
-                <div className="bg-gradient-to-r from-blue-100 to-indigo-100 p-3 rounded-xl">
-                  <User className="text-blue-600" size={24} />
+                <div className="bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-3 rounded-xl">
+                  <User className="text-blue-600 dark:text-blue-400" size={24} />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">Contact Information</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Contact Information</h2>
               </div>
               
               <div className="space-y-8">
@@ -209,18 +209,18 @@ export default function Contact() {
                         {item.icon}
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
+                        <h3 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
                         {item.link ? (
                           <a 
                             href={item.link}
-                            className={`text-gray-700 hover:text-${item.color}-600 transition-colors font-medium`}
+                            className={`text-gray-700 dark:text-gray-300 hover:text-${item.color}-600 dark:hover:text-${item.color}-400 transition-colors font-medium`}
                           >
                             {item.value}
                           </a>
                         ) : (
-                          <p className="text-gray-700 font-medium">{item.value}</p>
+                          <p className="text-gray-700 dark:text-gray-300 font-medium">{item.value}</p>
                         )}
-                        <p className="text-sm text-gray-500 mt-1">{item.description}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -233,9 +233,9 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="mt-12 pt-8 border-t border-gray-200"
+                className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
               >
-                <h3 className="font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <h3 className="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                   <Sparkles size={18} className="text-yellow-500" />
                   Connect With Me
                 </h3>
@@ -244,7 +244,7 @@ export default function Contact() {
                     href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-gradient-to-r from-gray-900 to-gray-800 text-white p-4 rounded-xl hover:shadow-xl transition-all group flex items-center justify-center gap-3"
+                    className="flex-1 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-700 dark:to-gray-600 text-white p-4 rounded-xl hover:shadow-xl transition-all group flex items-center justify-center gap-3"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -255,7 +255,7 @@ export default function Contact() {
                   
                   <motion.a
                     href="#"
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 rounded-xl hover:shadow-xl transition-all group flex items-center justify-center gap-3"
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white p-4 rounded-xl hover:shadow-xl transition-all group flex items-center justify-center gap-3"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -274,15 +274,15 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-b from-white to-gray-50 rounded-3xl shadow-2xl p-8 border border-gray-200"
+              className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-200 dark:border-gray-700"
             >
               <div className="flex items-center gap-4 mb-10">
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 rounded-2xl shadow-lg">
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500 p-4 rounded-2xl shadow-lg">
                   <MessageSquare className="text-white" size={28} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Send Me a Message</h2>
-                  <p className="text-gray-600">Fill out the form below and I'll get back to you promptly</p>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Send Me a Message</h2>
+                  <p className="text-gray-600 dark:text-gray-300">Fill out the form below and I'll get back to you promptly</p>
                 </div>
               </div>
 
@@ -295,9 +295,9 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                   >
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-3">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       <span className="flex items-center gap-2">
-                        <User size={16} className="text-gray-500" />
+                        <User size={16} className="text-gray-500 dark:text-gray-400" />
                         Your Name *
                       </span>
                     </label>
@@ -308,7 +308,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-gray-800 dark:text-white"
                       placeholder="John Doe"
                     />
                   </motion.div>
@@ -319,9 +319,9 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                       <span className="flex items-center gap-2">
-                        <MailIcon size={16} className="text-gray-500" />
+                        <MailIcon size={16} className="text-gray-500 dark:text-gray-400" />
                         Email Address *
                       </span>
                     </label>
@@ -332,7 +332,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-gray-800 dark:text-white"
                       placeholder="john@example.com"
                     />
                   </motion.div>
@@ -345,7 +345,7 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-3">
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                     Subject *
                   </label>
                   <select
@@ -354,7 +354,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                    className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-gray-800 dark:text-white"
                   >
                     <option value="">Select a subject</option>
                     <option value="project">Project Collaboration</option>
@@ -372,7 +372,7 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
                 >
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-3">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                     Message *
                   </label>
                   <textarea
@@ -382,7 +382,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none bg-white"
+                    className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none bg-white dark:bg-gray-800 dark:text-white"
                     placeholder="Tell me about your project, timeline, and requirements..."
                   />
                 </motion.div>
@@ -401,7 +401,7 @@ export default function Contact() {
                     className={`w-full group flex items-center justify-center gap-4 py-5 px-8 rounded-xl font-bold text-lg transition-all ${
                       isSubmitting 
                         ? 'bg-gray-400 cursor-not-allowed' 
-                        : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl'
+                        : 'bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 hover:from-blue-700 hover:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 shadow-lg hover:shadow-xl'
                     } text-white`}
                     whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                     whileTap={!isSubmitting ? { scale: 0.98 } : {}}
@@ -426,7 +426,7 @@ export default function Contact() {
                   
                   <div className="flex items-center justify-center gap-2 mt-6">
                     <Shield size={16} className="text-gray-400" />
-                    <p className="text-sm text-gray-500 text-center">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
                       Your information is secure and will only be used to respond to your inquiry.
                     </p>
                   </div>
@@ -440,7 +440,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
                 <Zap className="text-yellow-500" size={24} />
                 Common Types of Inquiries I Handle
               </h3>
@@ -453,13 +453,13 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
-                    className={`group bg-gradient-to-br from-${item.color}-50 to-white p-6 rounded-2xl border border-${item.color}-200 hover:border-${item.color}-400 hover:shadow-xl transition-all`}
+                    className={`group bg-gradient-to-br from-${item.color}-50 to-white dark:from-${item.color}-900/20 dark:to-gray-800 p-6 rounded-2xl border border-${item.color}-200 dark:border-${item.color}-700 hover:border-${item.color}-400 dark:hover:border-${item.color}-500 hover:shadow-xl transition-all`}
                   >
-                    <div className={`bg-${item.color}-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className={`bg-${item.color}-100 dark:bg-${item.color}-900/30 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                       {item.icon}
                     </div>
-                    <h4 className="font-bold text-gray-900 mb-3">{item.title}</h4>
-                    <p className={`text-sm text-${item.color}-800`}>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-3">{item.title}</h4>
+                    <p className={`text-sm text-${item.color}-800 dark:text-${item.color}-300`}>
                       {item.description}
                     </p>
                   </motion.div>
@@ -473,7 +473,7 @@ export default function Contact() {
                 transition={{ delay: 0.4 }}
                 className="mt-10 text-center"
               >
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-400">
                   Don't see what you're looking for? Feel free to reach out anyway!
                 </p>
               </motion.div>

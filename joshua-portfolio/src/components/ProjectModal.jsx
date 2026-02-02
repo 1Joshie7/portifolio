@@ -59,11 +59,11 @@ export default function ProjectModal({ project, onClose }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-gradient-to-b from-white to-gray-50 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-gray-200"
+            className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with gradient */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-t-2xl">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 p-6 rounded-t-2xl">
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-3xl font-bold text-white mb-2">{project.title}</h2>
@@ -105,12 +105,12 @@ export default function ProjectModal({ project, onClose }) {
                   transition={{ delay: 0.1 }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-red-100 p-2 rounded-lg">
-                      <Video className="text-red-600" size={24} />
+                    <div className="bg-red-100 dark:bg-red-900/30 p-2 rounded-lg">
+                      <Video className="text-red-600 dark:text-red-400" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">Demo Video</h3>
-                      <p className="text-gray-600 text-sm">Watch the project in action</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">Demo Video</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">Watch the project in action</p>
                     </div>
                   </div>
                   <div className="relative rounded-xl overflow-hidden shadow-xl">
@@ -141,12 +141,12 @@ export default function ProjectModal({ project, onClose }) {
                     transition={{ delay: 0.2 }}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-blue-100 p-2 rounded-lg">
-                        <Code className="text-blue-600" size={24} />
+                      <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
+                        <Code className="text-blue-600 dark:text-blue-400" size={24} />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Project Overview</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Project Overview</h3>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-lg">{project.longDescription}</p>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{project.longDescription}</p>
                   </motion.div>
 
                   {/* Features */}
@@ -156,19 +156,19 @@ export default function ProjectModal({ project, onClose }) {
                     transition={{ delay: 0.3 }}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-green-100 p-2 rounded-lg">
-                        <Zap className="text-green-600" size={24} />
+                      <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
+                        <Zap className="text-green-600 dark:text-green-400" size={24} />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Key Features</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Key Features</h3>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
                       {project.features?.map((feature, index) => (
-                        <div key={index} className="bg-white p-4 rounded-xl border border-gray-200 hover:border-blue-300 transition-colors group">
+                        <div key={index} className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 transition-colors group">
                           <div className="flex items-start gap-3">
                             <div className="mt-1">
-                              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              <div className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full"></div>
                             </div>
-                            <span className="text-gray-800 group-hover:text-blue-700 transition-colors">{feature}</span>
+                            <span className="text-gray-800 dark:text-gray-300 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">{feature}</span>
                           </div>
                         </div>
                       ))}
@@ -182,16 +182,16 @@ export default function ProjectModal({ project, onClose }) {
                     transition={{ delay: 0.4 }}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-purple-100 p-2 rounded-lg">
-                        <Shield className="text-purple-600" size={24} />
+                      <div className="bg-purple-100 dark:bg-purple-900/30 p-2 rounded-lg">
+                        <Shield className="text-purple-600 dark:text-purple-400" size={24} />
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900">Tech Stack</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Tech Stack</h3>
                     </div>
                     <div className="flex flex-wrap gap-3">
                       {project.techStack.map((tech, index) => (
                         <motion.span
                           key={index}
-                          className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-800 px-4 py-2 rounded-lg border border-blue-200 font-medium hover:shadow-md transition-shadow"
+                          className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-lg border border-blue-200 dark:border-blue-700 font-medium hover:shadow-md transition-shadow"
                           whileHover={{ scale: 1.05 }}
                         >
                           {tech}
@@ -208,10 +208,10 @@ export default function ProjectModal({ project, onClose }) {
                       transition={{ delay: 0.5 }}
                     >
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="bg-orange-100 p-2 rounded-lg">
-                          <ImageIcon className="text-orange-600" size={24} />
+                        <div className="bg-orange-100 dark:bg-orange-900/30 p-2 rounded-lg">
+                          <ImageIcon className="text-orange-600 dark:text-orange-400" size={24} />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900">Screenshots</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Screenshots</h3>
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
                         {project.images.map((img, index) => (
@@ -224,15 +224,15 @@ export default function ProjectModal({ project, onClose }) {
                             <img
                               src={img}
                               alt={`${project.title} screenshot ${index + 1}`}
-                              className="w-full h-56 object-cover rounded-xl border-2 border-gray-300 group-hover:border-blue-400 shadow-lg group-hover:shadow-xl transition-all"
+                              className="w-full h-56 object-cover rounded-xl border-2 border-gray-300 dark:border-gray-600 group-hover:border-blue-400 dark:group-hover:border-blue-500 shadow-lg group-hover:shadow-xl transition-all"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg flex items-center gap-2">
-                                <Maximize2 size={18} className="text-gray-700" />
-                                <span className="font-medium text-gray-800">View fullscreen</span>
+                              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-3 rounded-lg shadow-lg flex items-center gap-2">
+                                <Maximize2 size={18} className="text-gray-700 dark:text-gray-300" />
+                                <span className="font-medium text-gray-800 dark:text-white">View fullscreen</span>
                               </div>
                             </div>
-                            <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
+                            <div className="absolute top-3 right-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow-md dark:text-white">
                               {index + 1}
                             </div>
                           </motion.div>
@@ -249,7 +249,7 @@ export default function ProjectModal({ project, onClose }) {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-6 shadow-xl"
+                    className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 text-white rounded-2xl p-6 shadow-xl"
                   >
                     <h3 className="text-xl font-bold mb-6 text-white">Project Links</h3>
                     <div className="space-y-4">
@@ -257,17 +257,17 @@ export default function ProjectModal({ project, onClose }) {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-4 bg-gray-800 hover:bg-gray-700 rounded-xl transition-colors group"
+                        className="flex items-center justify-between p-4 bg-gray-800 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 rounded-xl transition-colors group"
                         whileHover={{ x: 5 }}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="bg-gray-700 p-2 rounded-lg">
+                          <div className="bg-gray-700 dark:bg-gray-600 p-2 rounded-lg">
                             <Github size={20} />
                           </div>
                           <div>
                             <div className="font-medium">GitHub Repository</div>
-                            <div className="text-gray-400 text-sm">View source code</div>
+                            <div className="text-gray-400 dark:text-gray-300 text-sm">View source code</div>
                           </div>
                         </div>
                         <ExternalLink size={18} className="text-gray-400 group-hover:text-white" />
@@ -278,7 +278,7 @@ export default function ProjectModal({ project, onClose }) {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-xl transition-all group"
+                          className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 hover:from-blue-700 hover:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 rounded-xl transition-all group"
                           whileHover={{ x: 5 }}
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -303,21 +303,21 @@ export default function ProjectModal({ project, onClose }) {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 }}
-                      className="bg-gradient-to-br from-orange-50 to-red-50 border border-orange-200 rounded-2xl p-6"
+                      className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border border-orange-200 dark:border-orange-700 rounded-2xl p-6"
                     >
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="bg-orange-100 p-2 rounded-lg">
-                          <Target className="text-orange-600" size={24} />
+                        <div className="bg-orange-100 dark:bg-orange-900/30 p-2 rounded-lg">
+                          <Target className="text-orange-600 dark:text-orange-400" size={24} />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900">Challenges & Solutions</h3>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Challenges & Solutions</h3>
                       </div>
                       <div className="space-y-4">
                         {project.challenges.map((challenge, index) => (
                           <div key={index} className="flex gap-3">
                             <div className="mt-1">
-                              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                              <div className="w-2 h-2 bg-orange-500 dark:bg-orange-400 rounded-full"></div>
                             </div>
-                            <p className="text-gray-700 text-sm">{challenge}</p>
+                            <p className="text-gray-700 dark:text-gray-300 text-sm">{challenge}</p>
                           </div>
                         ))}
                       </div>
@@ -329,25 +329,25 @@ export default function ProjectModal({ project, onClose }) {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm"
+                    className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm"
                   >
-                    <h3 className="text-xl font-bold mb-6 text-gray-900">Project Details</h3>
+                    <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Project Details</h3>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Role</span>
-                        <span className="font-medium">{project.role}</span>
+                        <span className="text-gray-600 dark:text-gray-400">Role</span>
+                        <span className="font-medium dark:text-white">{project.role}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Timeline</span>
-                        <span className="font-medium">{project.date}</span>
+                        <span className="text-gray-600 dark:text-gray-400">Timeline</span>
+                        <span className="font-medium dark:text-white">{project.date}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Category</span>
-                        <span className="font-medium">{project.category}</span>
+                        <span className="text-gray-600 dark:text-gray-400">Category</span>
+                        <span className="font-medium dark:text-white">{project.category}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Status</span>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${project.status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                        <span className="text-gray-600 dark:text-gray-400">Status</span>
+                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${project.status === 'completed' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'}`}>
                           {project.status}
                         </span>
                       </div>

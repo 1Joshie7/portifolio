@@ -22,32 +22,32 @@ import {
 export default function About() {
   const competencies = [
     {
-      icon: <Code className="text-blue-600" size={24} />,
-      bg: "bg-blue-100",
+      icon: <Code className="text-blue-600 dark:text-blue-400" size={24} />,
+      bg: "bg-blue-100 dark:bg-blue-900/30",
       title: "Full-Stack Development",
       description: "End-to-end application development with Django, React, and modern JavaScript ecosystems.",
       tools: ["Django", "React", "Node.js", "TypeScript"],
       color: "blue"
     },
     {
-      icon: <Brain className="text-green-600" size={24} />,
-      bg: "bg-green-100",
+      icon: <Brain className="text-green-600 dark:text-green-400" size={24} />,
+      bg: "bg-green-100 dark:bg-green-900/30",
       title: "AI Integration",
       description: "Practical AI/ML implementation with Google Gemini, LLM prompting, and intelligent systems.",
       tools: ["Google Gemini", "LLM", "AI APIs", "OpenAI"],
       color: "green"
     },
     {
-      icon: <Database className="text-purple-600" size={24} />,
-      bg: "bg-purple-100",
+      icon: <Database className="text-purple-600 dark:text-purple-400" size={24} />,
+      bg: "bg-purple-100 dark:bg-purple-900/30",
       title: "Database Architecture",
       description: "SQL/NoSQL optimization, PostgreSQL, MongoDB, and Firebase for scalable data solutions.",
       tools: ["PostgreSQL", "MongoDB", "Firebase", "Redis"],
       color: "purple"
     },
     {
-      icon: <Server className="text-orange-600" size={24} />,
-      bg: "bg-orange-100",
+      icon: <Server className="text-orange-600 dark:text-orange-400" size={24} />,
+      bg: "bg-orange-100 dark:bg-orange-900/30",
       title: "DevOps & Deployment",
       description: "Containerization with Docker, CI/CD pipelines, and cloud deployment strategies.",
       tools: ["Docker", "CI/CD", "Vercel", "Render"],
@@ -61,21 +61,21 @@ export default function About() {
       title: "Production-Grade Development",
       description: "Built multiple production-ready applications solving real-world problems in healthcare, e-commerce, and education sectors.",
       skills: ["Django", "React", "PostgreSQL", "Docker"],
-      icon: <Rocket className="text-blue-600" size={20} />
+      icon: <Rocket className="text-blue-600 dark:text-blue-400" size={20} />
     },
     {
       year: "2023 - 2024",
       title: "AI Engineering Integration",
       description: "Incorporated AI capabilities into practical applications, including AI-powered healthcare and automated assessment systems.",
       skills: ["Google Gemini", "LLM", "AI APIs", "Python"],
-      icon: <CpuIcon className="text-green-600" size={20} />
+      icon: <CpuIcon className="text-green-600 dark:text-green-400" size={20} />
     },
     {
       year: "2022 - 2023",
       title: "Full-Stack Foundation",
       description: "Mastered core web development technologies and built foundational projects with modern architectures.",
       skills: ["JavaScript", "Python", "React", "Node.js"],
-      icon: <Code className="text-purple-600" size={20} />
+      icon: <Code className="text-purple-600 dark:text-purple-400" size={20} />
     }
   ];
 
@@ -103,7 +103,7 @@ export default function About() {
   ];
 
   return (
-    <div className="pt-24 pb-20 min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <div className="pt-24 pb-20 min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
       <div className="container mx-auto px-6">
         
         {/* Header Section */}
@@ -117,7 +117,7 @@ export default function About() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full mb-6 shadow-lg"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white px-6 py-3 rounded-full mb-6 shadow-lg"
           >
             <Code size={20} />
             <span className="font-medium">Software Engineer</span>
@@ -127,10 +127,10 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
           >
             Building Scalable Solutions at<br/>
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
               The Intersection of AI & Full-Stack
             </span>
           </motion.h1>
@@ -139,7 +139,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
             Specializing in production-grade applications with expertise across Django, React, 
             and cloud-native architectures. Passionate about solving real-world problems through innovative technology.
@@ -159,12 +159,12 @@ export default function About() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-full mb-4">
               <TrendingUp size={18} />
               <span className="font-medium">Core Competencies</span>
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Areas where I deliver exceptional value and innovation</p>
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Technical Expertise</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Areas where I deliver exceptional value and innovation</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -179,15 +179,15 @@ export default function About() {
                 className="group relative"
               >
                 <div className={`absolute -inset-0.5 bg-gradient-to-r from-${item.color}-500 to-${item.color}-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500`}></div>
-                <div className="relative bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300">
+                <div className="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
                   <div className={`${item.bg} w-14 h-14 rounded-xl flex items-center justify-center mb-6`}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 mb-6">{item.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">{item.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {item.tools.map((tool, i) => (
-                      <span key={i} className={`bg-${item.color}-50 text-${item.color}-700 text-xs px-3 py-1 rounded-full border border-${item.color}-200`}>
+                      <span key={i} className={`bg-${item.color}-50 dark:bg-${item.color}-900/30 text-${item.color}-700 dark:text-${item.color}-300 text-xs px-3 py-1 rounded-full border border-${item.color}-200 dark:border-${item.color}-700`}>
                         {tool}
                       </span>
                     ))}
@@ -210,8 +210,8 @@ export default function About() {
             <div className="flex items-center gap-3 mb-10">
               <div className="w-2 h-10 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">Professional Journey</h2>
-                <p className="text-gray-600">My path to becoming a full-stack developer</p>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Professional Journey</h2>
+                <p className="text-gray-600 dark:text-gray-300">My path to becoming a full-stack developer</p>
               </div>
             </div>
             
@@ -229,21 +229,21 @@ export default function About() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="relative pl-16"
                   >
-                    <div className="absolute left-4 top-1 w-6 h-6 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center">
+                    <div className="absolute left-4 top-1 w-6 h-6 bg-white dark:bg-gray-800 border-4 border-blue-600 dark:border-blue-500 rounded-full flex items-center justify-center">
                       {item.icon}
                     </div>
                     
-                    <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow">
                       <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                        <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{item.title}</h3>
+                        <span className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">
                           {item.year}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-4">{item.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">{item.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {item.skills.map((skill, i) => (
-                          <span key={i} className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full">
+                          <span key={i} className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm px-3 py-1 rounded-full">
                             {skill}
                           </span>
                         ))}
@@ -264,8 +264,8 @@ export default function About() {
             <div className="flex items-center gap-3 mb-10">
               <div className="w-2 h-10 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full"></div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">Education & Growth</h2>
-                <p className="text-gray-600">Academic foundation and continuous learning</p>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Education & Growth</h2>
+                <p className="text-gray-600 dark:text-gray-300">Academic foundation and continuous learning</p>
               </div>
             </div>
 
@@ -273,7 +273,7 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-3xl p-8 shadow-2xl"
+              className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 text-white rounded-3xl p-8 shadow-2xl"
             >
               <div className="flex items-center gap-6 mb-8">
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
@@ -336,27 +336,27 @@ export default function About() {
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-purple-800 dark:text-purple-300 px-4 py-2 rounded-full mb-4">
               <Lightbulb size={18} />
               <span className="font-medium">Philosophy</span>
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Development Philosophy</h2>
-            <p className="text-gray-600">How I approach problem-solving and technology</p>
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Development Philosophy</h2>
+            <p className="text-gray-600 dark:text-gray-300">How I approach problem-solving and technology</p>
           </div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-white to-gray-50 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-200"
+            className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700"
           >
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-14 h-14 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center">
-                <Users className="text-blue-600" size={28} />
+              <div className="w-14 h-14 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl flex items-center justify-center">
+                <Users className="text-blue-600 dark:text-blue-400" size={28} />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">Human-Centered Engineering</h3>
-                <p className="text-gray-600">Technology should solve real human problems</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Human-Centered Engineering</h3>
+                <p className="text-gray-600 dark:text-gray-300">Technology should solve real human problems</p>
               </div>
             </div>
             
@@ -366,7 +366,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-xl text-gray-700 leading-relaxed"
+                className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
               >
                 "I approach software engineering as a discipline of solving human problems 
                 through elegant technical solutions. Every system I build is designed with 
@@ -378,7 +378,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="text-lg text-gray-600 leading-relaxed"
+                className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
               >
                 My work bridges the gap between academic excellence and industry requirements, 
                 delivering production-ready applications that serve actual user needs while 
@@ -391,15 +391,15 @@ export default function About() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div>
-                <p className="font-bold text-gray-900 text-lg">— Joshua Tevera</p>
-                <p className="text-gray-600">Software Engineering Student & Full-Stack Developer</p>
+                <p className="font-bold text-gray-900 dark:text-white text-lg">— Joshua Tevera</p>
+                <p className="text-gray-600 dark:text-gray-300">Software Engineering Student & Full-Stack Developer</p>
               </div>
               <div className="flex items-center gap-2">
                 <Award className="text-yellow-500" size={20} />
-                <span className="text-sm text-gray-600">Building with purpose since 2022</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">Building with purpose since 2022</span>
               </div>
             </motion.div>
           </motion.div>
