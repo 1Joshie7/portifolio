@@ -144,15 +144,7 @@ export default function Hero() {
                 View My Projects
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
               </motion.a>
-              
-              <motion.a 
-                href="/contact" 
-                className="btn-secondary flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Contact Me
-              </motion.a>
+            
               
               <motion.a 
                 href={socialLinks.github}
