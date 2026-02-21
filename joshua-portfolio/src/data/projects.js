@@ -121,7 +121,7 @@ export const projects = [
     images: [], // Add images if you have more
     youtubeId: "", // YouTube video ID
     liveUrl: "https://u-find.vercel.app/seller/login",
-    githubUrl: "https://github.com/1Joshie7/u-finder",
+    githubUrl: "https://github.com/desmondkwaramba1-png/U-FIND/tree/latest-so-far",
     status: "completed adding more features",
     category: "full-stack",
     date: "dec 2024"
