@@ -95,9 +95,9 @@ export const projects = [
       "add , delete, update products",
     ],
     images: [], // Add images if you have more
-    youtubeId: "", // YouTube video ID
+    youtubeId: "wD0CYkX2Tdo", // YouTube video ID
     liveUrl: "",
-    githubUrl: "https://github.com/1Joshie7/market-place-2.1",
+    githubUrl: "https://github.com/1Joshie7/online-chat-store",
     status: " nearly completed",
     category: "full-stack",
     date: "Nov 2024"
