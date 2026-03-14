@@ -1,26 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Github, 
-  Linkedin, 
-  Send, 
-  CheckCircle,
-  MessageSquare,
-  Clock,
-  Zap,
-  Briefcase,
-  Code2,
-  Brain,
-  ArrowRight,
-  Sparkles,
-  Shield,
-  User,
-  Mail as MailIcon
+  Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle,
+  MessageSquare, Clock, Zap, Briefcase, Code2, Brain, ArrowRight,
+  Sparkles, Shield, User, Mail as MailIcon
 } from 'lucide-react';
 import { socialLinks } from '../data/social';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -32,19 +18,38 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // ✅ COMPLETE WORKING HANDLESUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Send email using EmailJS - ALL YOUR CREDENTIALS ARE NOW HERE
+      await emailjs.send(
+        'service_mtstrvn',              // Your service ID
+        'template_2307r2d',              // Your template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Joshua',
+          reply_to: formData.email,
+        },
+        '-FYYgefs-fkXgDdd_'               // ✅ Your public key
+      );
+
+      // Success
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1500);
+      
+    } catch (error) {
+      console.error('Failed to send:', error);
+      setIsSubmitting(false);
+      alert('Failed to send. Please email me directly at ' + socialLinks.email);
+    }
   };
 
   const handleChange = (e) => {
