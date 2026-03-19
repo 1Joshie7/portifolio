@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';                // ✅ added useRef
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle,
@@ -18,13 +18,27 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // ✅ COMPLETE WORKING HANDLESUBMIT
+  // ✅ Ref to scroll to success message
+  const successRef = useRef(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      // Send email using EmailJS - ALL YOUR CREDENTIALS ARE NOW HERE
+      // ✅ Get current date and time
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric' 
+      }); // e.g., "Mar 19, 2024"
+      const time = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      }); // e.g., "02:30 PM"
+
+      // Send email using EmailJS – now includes date & time
       await emailjs.send(
         'service_mtstrvn',              // Your service ID
         'template_2307r2d',              // Your template ID
@@ -35,14 +49,28 @@ export default function Contact() {
           message: formData.message,
           to_name: 'Joshua',
           reply_to: formData.email,
+          date: date,                     // ✅ added
+          time: time                       // ✅ added
         },
-        '-FYYgefs-fkXgDdd_'               // ✅ Your public key
+        '-FYYgefs-fkXgDdd_'               // Your public key
       );
 
       // Success
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
+
+      // ✅ Scroll to success message after it renders
+      setTimeout(() => {
+        if (successRef.current) {
+          successRef.current.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }
+      }, 100);
+
+      // Hide success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
       
     } catch (error) {
@@ -157,10 +185,11 @@ export default function Contact() {
             opportunities, I'm always open to meaningful conversations about technology and innovation.
           </motion.p>
 
-          {/* Success Message */}
+          {/* ✅ Success Message with ref */}
           <AnimatePresence>
             {isSubmitted && (
               <motion.div
+                ref={successRef}
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
