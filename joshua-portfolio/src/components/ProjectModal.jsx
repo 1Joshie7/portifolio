@@ -1,4 +1,4 @@
-import { X, Github, ExternalLink, Calendar, User, Image as ImageIcon, Target, Zap, Shield, Code, Video, ChevronLeft, ChevronRight, Maximize2, Minimize2 } from 'lucide-react';
+import { X, Github, ExternalLink, Calendar, User, Image as ImageIcon, Target, Zap, Shield, Code, Video, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -8,7 +8,6 @@ export default function ProjectModal({ project, onClose }) {
 
   if (!project) return null;
 
-  // Close on ESC key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
@@ -63,11 +62,11 @@ export default function ProjectModal({ project, onClose }) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with gradient */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 p-6 rounded-t-2xl">
+            <div className="bg-gradient-to-r from-teal-600 to-teal-500 p-6 rounded-t-2xl">
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-3xl font-bold text-white mb-2">{project.title}</h2>
-                  <p className="text-blue-100">{project.subtitle}</p>
+                  <p className="text-teal-100">{project.subtitle}</p>
                 </div>
                 <motion.button 
                   onClick={onClose}
@@ -81,11 +80,11 @@ export default function ProjectModal({ project, onClose }) {
               
               {/* Quick stats */}
               <div className="flex flex-wrap gap-4 mt-6">
-                <div className="flex items-center gap-2 text-blue-100">
+                <div className="flex items-center gap-2 text-teal-100">
                   <Calendar size={18} />
                   <span>{project.date}</span>
                 </div>
-                <div className="flex items-center gap-2 text-blue-100">
+                <div className="flex items-center gap-2 text-teal-100">
                   <User size={18} />
                   <span>{project.role}</span>
                 </div>
@@ -97,7 +96,7 @@ export default function ProjectModal({ project, onClose }) {
 
             <div className="p-8">
               {/* Video Section */}
-              {project.youtubeId ? (
+              {project.youtubeId && (
                 <motion.div 
                   className="mb-8"
                   initial={{ opacity: 0, y: 20 }}
@@ -125,11 +124,7 @@ export default function ProjectModal({ project, onClose }) {
                     </div>
                   </div>
                 </motion.div>
-              ) : project.videoUrl ? (
-                <div className="mb-8">
-                  {/* Local video player */}
-                </div>
-              ) : null}
+              )}
 
               <div className="grid lg:grid-cols-3 gap-8">
                 {/* Main Content */}
@@ -141,8 +136,8 @@ export default function ProjectModal({ project, onClose }) {
                     transition={{ delay: 0.2 }}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
-                        <Code className="text-blue-600 dark:text-blue-400" size={24} />
+                      <div className="bg-teal-100 dark:bg-teal-900/30 p-2 rounded-lg">
+                        <Code className="text-teal-600 dark:text-teal-400" size={24} />
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Project Overview</h3>
                     </div>
@@ -150,30 +145,32 @@ export default function ProjectModal({ project, onClose }) {
                   </motion.div>
 
                   {/* Features */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
-                        <Zap className="text-green-600 dark:text-green-400" size={24} />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Key Features</h3>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {project.features?.map((feature, index) => (
-                        <div key={index} className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 transition-colors group">
-                          <div className="flex items-start gap-3">
-                            <div className="mt-1">
-                              <div className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full"></div>
-                            </div>
-                            <span className="text-gray-800 dark:text-gray-300 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">{feature}</span>
-                          </div>
+                  {project.features && project.features.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
+                          <Zap className="text-green-600 dark:text-green-400" size={24} />
                         </div>
-                      ))}
-                    </div>
-                  </motion.div>
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Key Features</h3>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        {project.features.map((feature, index) => (
+                          <div key={index} className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-500 transition-colors group">
+                            <div className="flex items-start gap-3">
+                              <div className="mt-1">
+                                <div className="w-2 h-2 bg-teal-500 dark:bg-teal-400 rounded-full"></div>
+                              </div>
+                              <span className="text-gray-800 dark:text-gray-300 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">{feature}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
 
                   {/* Tech Stack */}
                   <motion.div
@@ -191,7 +188,7 @@ export default function ProjectModal({ project, onClose }) {
                       {project.techStack.map((tech, index) => (
                         <motion.span
                           key={index}
-                          className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-lg border border-blue-200 dark:border-blue-700 font-medium hover:shadow-md transition-shadow"
+                          className="bg-gradient-to-r from-teal-50 to-teal-100 dark:from-teal-900/30 dark:to-teal-800/30 text-teal-800 dark:text-teal-300 px-4 py-2 rounded-lg border border-teal-200 dark:border-teal-700 font-medium hover:shadow-md transition-shadow"
                           whileHover={{ scale: 1.05 }}
                         >
                           {tech}
@@ -224,7 +221,7 @@ export default function ProjectModal({ project, onClose }) {
                             <img
                               src={img}
                               alt={`${project.title} screenshot ${index + 1}`}
-                              className="w-full h-56 object-cover rounded-xl border-2 border-gray-300 dark:border-gray-600 group-hover:border-blue-400 dark:group-hover:border-blue-500 shadow-lg group-hover:shadow-xl transition-all"
+                              className="w-full h-56 object-cover rounded-xl border-2 border-gray-300 dark:border-gray-600 group-hover:border-teal-400 dark:group-hover:border-teal-500 shadow-lg group-hover:shadow-xl transition-all"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-3 rounded-lg shadow-lg flex items-center gap-2">
@@ -278,7 +275,7 @@ export default function ProjectModal({ project, onClose }) {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 hover:from-blue-700 hover:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 rounded-xl transition-all group"
+                          className="flex items-center justify-between p-4 bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 rounded-xl transition-all group"
                           whileHover={{ x: 5 }}
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -288,7 +285,7 @@ export default function ProjectModal({ project, onClose }) {
                             </div>
                             <div>
                               <div className="font-medium">Live Demo</div>
-                              <div className="text-blue-200 text-sm">Visit deployed site</div>
+                              <div className="text-teal-200 text-sm">Visit deployed site</div>
                             </div>
                           </div>
                           <ExternalLink size={18} className="text-white/80 group-hover:text-white" />
@@ -370,124 +367,65 @@ export default function ProjectModal({ project, onClose }) {
             className="fixed inset-0 bg-black/95 backdrop-blur-lg z-[100] flex items-center justify-center p-4"
             onClick={closeLightbox}
           >
-            {/* Close button */}
             <motion.button
               onClick={closeLightbox}
               className="absolute top-6 right-6 text-white hover:bg-white/20 p-3 rounded-full transition-colors z-10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
             >
               <X size={32} />
             </motion.button>
 
-            {/* Previous button */}
             {project.images.length > 1 && (
               <motion.button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  prevImage();
-                }}
+                onClick={(e) => { e.stopPropagation(); prevImage(); }}
                 className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 p-3 rounded-full transition-colors z-10"
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
               >
                 <ChevronLeft size={32} />
               </motion.button>
             )}
 
-            {/* Next button */}
             {project.images.length > 1 && (
               <motion.button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  nextImage();
-                }}
+                onClick={(e) => { e.stopPropagation(); nextImage(); }}
                 className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 p-3 rounded-full transition-colors z-10"
                 whileHover={{ scale: 1.1, x: 5 }}
                 whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
               >
                 <ChevronRight size={32} />
               </motion.button>
             )}
 
-            {/* Minimize button */}
             <motion.button
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(project.images[currentImageIndex], '_blank');
-              }}
+              onClick={(e) => { e.stopPropagation(); window.open(project.images[currentImageIndex], '_blank'); }}
               className="absolute top-6 left-6 text-white hover:bg-white/20 p-3 rounded-full transition-colors z-10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              title="Open in new tab"
             >
               <Maximize2 size={32} />
             </motion.button>
 
-            {/* Image counter */}
-            <motion.div
-              className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium z-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
+            <motion.div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium z-10">
               {currentImageIndex + 1} / {project.images.length}
             </motion.div>
 
-            {/* Image */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="relative max-w-7xl max-h-[85vh] w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={project.images[currentImageIndex]}
-                alt={`Screenshot ${currentImageIndex + 1}`}
-                className="w-full h-full object-contain rounded-lg"
-              />
+            <motion.div className="relative max-w-7xl max-h-[85vh] w-full" onClick={(e) => e.stopPropagation()}>
+              <img src={project.images[currentImageIndex]} alt={`Screenshot ${currentImageIndex + 1}`} className="w-full h-full object-contain rounded-lg" />
             </motion.div>
 
-            {/* Thumbnails (if multiple images) */}
             {project.images.length > 1 && (
-              <motion.div
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
+              <motion.div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {project.images.map((img, index) => (
                   <button
                     key={index}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setCurrentImageIndex(index);
-                    }}
+                    onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index); }}
                     className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                      index === currentImageIndex
-                        ? 'border-white scale-110'
-                        : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'
+                      index === currentImageIndex ? 'border-teal-500 scale-110' : 'border-transparent opacity-60 hover:opacity-100 hover:scale-105'
                     }`}
                   >
-                    <img
-                      src={img}
-                      alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={img} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </motion.div>

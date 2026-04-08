@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';                // ✅ added useRef
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle,
@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { socialLinks } from '../data/social';
 import emailjs from '@emailjs/browser';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,31 +18,21 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // ✅ Ref to scroll to success message
   const successRef = useRef(null);
+  const { isDark } = useTheme();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      // ✅ Get current date and time
       const now = new Date();
-      const date = now.toLocaleDateString('en-US', { 
-        month: 'short', 
-        day: 'numeric', 
-        year: 'numeric' 
-      }); // e.g., "Mar 19, 2024"
-      const time = now.toLocaleTimeString('en-US', { 
-        hour: '2-digit', 
-        minute: '2-digit' 
-      }); // e.g., "02:30 PM"
+      const date = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
-      // Send email using EmailJS – now includes date & time
       await emailjs.send(
-        'service_mtstrvn',              // Your service ID
-        'template_2307r2d',              // Your template ID
+        'service_mtstrvn',
+        'template_2307r2d',
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -49,28 +40,22 @@ export default function Contact() {
           message: formData.message,
           to_name: 'Joshua',
           reply_to: formData.email,
-          date: date,                     // ✅ added
-          time: time                       // ✅ added
+          date: date,
+          time: time
         },
-        '-FYYgefs-fkXgDdd_'               // Your public key
+        '-FYYgefs-fkXgDdd_'
       );
 
-      // Success
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
 
-      // ✅ Scroll to success message after it renders
       setTimeout(() => {
         if (successRef.current) {
-          successRef.current.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
+          successRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 100);
 
-      // Hide success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
       
     } catch (error) {
@@ -81,73 +66,63 @@ export default function Contact() {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const contactInfo = [
     {
-      icon: <Mail className="text-blue-600 dark:text-blue-400" size={24} />,
-      bg: "bg-blue-100 dark:bg-blue-900/30",
+      icon: <Mail className="text-teal-500" size={24} />,
       title: "Email",
       value: socialLinks.email,
       link: `mailto:${socialLinks.email}`,
       description: "Primary communication channel",
-      color: "blue"
     },
     {
-      icon: <Phone className="text-green-600 dark:text-green-400" size={24} />,
-      bg: "bg-green-100 dark:bg-green-900/30",
+      icon: <Phone className="text-teal-500" size={24} />,
       title: "Phone",
       value: socialLinks.phone,
       link: `tel:${socialLinks.phone}`,
       description: "Available for calls",
-      color: "green"
     },
     {
-      icon: <MapPin className="text-purple-600 dark:text-purple-400" size={24} />,
-      bg: "bg-purple-100 dark:bg-purple-900/30",
+      icon: <MapPin className="text-teal-500" size={24} />,
       title: "Location",
       value: socialLinks.location,
       description: "Open to remote opportunities",
-      color: "purple"
     },
     {
-      icon: <Clock className="text-orange-600 dark:text-orange-400" size={24} />,
-      bg: "bg-orange-100 dark:bg-orange-900/30",
+      icon: <Clock className="text-teal-500" size={24} />,
       title: "Response Time",
       value: "Within 24 hours",
       description: "Usually much faster",
-      color: "orange"
     }
   ];
 
   const inquiryTypes = [
     {
-      icon: <Code2 className="text-blue-600 dark:text-blue-400" size={20} />,
+      icon: <Code2 className="text-teal-500" size={20} />,
       title: "Full-Stack Development",
       description: "Custom web applications, API development, system architecture",
-      color: "blue"
     },
     {
-      icon: <Brain className="text-green-600 dark:text-green-400" size={20} />,
+      icon: <Brain className="text-teal-500" size={20} />,
       title: "AI Integration",
       description: "AI-powered features, LLM implementation, intelligent systems",
-      color: "green"
     },
     {
-      icon: <Briefcase className="text-purple-600 dark:text-purple-400" size={20} />,
+      icon: <Briefcase className="text-teal-500" size={20} />,
       title: "Technical Consultation",
       description: "Code review, architecture advice, technology stack guidance",
-      color: "purple"
     }
   ];
 
   return (
-    <div className="pt-24 pb-20 min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-      <div className="container mx-auto px-6">
+    <div className={`pt-24 pb-20 min-h-screen ${isDark ? 'bg-gray-950' : 'bg-gray-50'} overflow-hidden`}>
+      {/* Background Glows */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* Header */}
         <motion.div
@@ -160,7 +135,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white px-6 py-3 rounded-full mb-6 shadow-lg"
+            className="inline-flex items-center gap-3 bg-teal-600 text-white px-6 py-3 rounded-full mb-6 shadow-lg shadow-teal-600/25"
           >
             <MessageSquare size={20} />
             <span className="font-medium">Get in Touch</span>
@@ -170,22 +145,22 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+            className={`text-4xl md:text-6xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}
           >
-            Let's Build Something <span className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">Amazing</span>
+            Let's Build Something <span className="text-teal-500">Amazing</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
+            className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}
           >
             Whether you have a project in mind, need technical consultation, or want to discuss 
             opportunities, I'm always open to meaningful conversations about technology and innovation.
           </motion.p>
 
-          {/* ✅ Success Message with ref */}
+          {/* Success Message */}
           <AnimatePresence>
             {isSubmitted && (
               <motion.div
@@ -195,14 +170,14 @@ export default function Contact() {
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 className="mt-8 mx-auto max-w-md"
               >
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-700 rounded-2xl p-6 shadow-lg">
+                <div className="bg-teal-500/10 border border-teal-500/30 rounded-2xl p-6">
                   <div className="flex items-center gap-4">
-                    <div className="bg-green-100 dark:bg-green-900/50 p-3 rounded-full">
-                      <CheckCircle className="text-green-600 dark:text-green-400" size={24} />
+                    <div className="bg-teal-500/20 p-3 rounded-full">
+                      <CheckCircle className="text-teal-500" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-green-900 dark:text-green-300 text-lg">Message Sent Successfully!</h3>
-                      <p className="text-green-700 dark:text-green-400">I'll get back to you within 24 hours.</p>
+                      <h3 className="font-bold text-teal-500 text-lg">Message Sent Successfully!</h3>
+                      <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>I'll get back to you within 24 hours.</p>
                     </div>
                   </div>
                 </div>
@@ -220,12 +195,12 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-1"
           >
-            <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-200 dark:border-gray-700 sticky top-32">
+            <div className={`${isDark ? 'glass-card' : 'bg-white shadow-xl'} p-8 rounded-2xl ${isDark ? 'glow-border' : 'border border-gray-200'} sticky top-32`}>
               <div className="flex items-center gap-3 mb-10">
-                <div className="bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 p-3 rounded-xl">
-                  <User className="text-blue-600 dark:text-blue-400" size={24} />
+                <div className="bg-teal-500/10 p-3 rounded-xl">
+                  <User className="text-teal-500" size={24} />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Contact Information</h2>
+                <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Contact Information</h2>
               </div>
               
               <div className="space-y-8">
@@ -239,22 +214,19 @@ export default function Contact() {
                     className="group"
                   >
                     <div className="flex items-start gap-4">
-                      <div className={`${item.bg} p-3 rounded-xl group-hover:scale-110 transition-transform duration-300`}>
+                      <div className="bg-teal-500/10 p-3 rounded-xl group-hover:scale-110 transition-transform duration-300">
                         {item.icon}
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
+                        <h3 className={`font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.title}</h3>
                         {item.link ? (
-                          <a 
-                            href={item.link}
-                            className={`text-gray-700 dark:text-gray-300 hover:text-${item.color}-600 dark:hover:text-${item.color}-400 transition-colors font-medium`}
-                          >
+                          <a href={item.link} className={`${isDark ? 'text-gray-400 hover:text-teal-500' : 'text-gray-600 hover:text-teal-600'} transition-colors font-medium`}>
                             {item.value}
                           </a>
                         ) : (
-                          <p className="text-gray-700 dark:text-gray-300 font-medium">{item.value}</p>
+                          <p className={`font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{item.value}</p>
                         )}
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.description}</p>
+                        <p className={`text-sm mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{item.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -267,10 +239,10 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
+                className={`mt-12 pt-8 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}
               >
-                <h3 className="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                  <Sparkles size={18} className="text-yellow-500" />
+                <h3 className={`font-bold mb-6 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <Sparkles size={18} className="text-teal-500" />
                   Connect With Me
                 </h3>
                 <div className="flex gap-4">
@@ -278,18 +250,18 @@ export default function Contact() {
                     href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-700 dark:to-gray-600 text-white p-4 rounded-xl hover:shadow-xl transition-all group flex items-center justify-center gap-3"
+                    className={`flex-1 ${isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} text-white p-4 rounded-xl transition-all group flex items-center justify-center gap-3`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Github size={20} />
-                    <span className="font-medium">GitHub</span>
-                    <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    <Github size={20} className={isDark ? 'text-white' : 'text-gray-800'} />
+                    <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-800'}`}>GitHub</span>
+                    <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-teal-500" />
                   </motion.a>
                   
                   <motion.a
                     href="#"
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white p-4 rounded-xl hover:shadow-xl transition-all group flex items-center justify-center gap-3"
+                    className="flex-1 bg-teal-600 text-white p-4 rounded-xl hover:bg-teal-700 transition-all group flex items-center justify-center gap-3"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -308,15 +280,15 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-2xl p-8 border border-gray-200 dark:border-gray-700"
+              className={`${isDark ? 'glass-card' : 'bg-white shadow-xl'} p-8 rounded-2xl ${isDark ? 'glow-border' : 'border border-gray-200'}`}
             >
               <div className="flex items-center gap-4 mb-10">
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500 p-4 rounded-2xl shadow-lg">
+                <div className="bg-teal-600 p-4 rounded-2xl shadow-lg">
                   <MessageSquare className="text-white" size={28} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Send Me a Message</h2>
-                  <p className="text-gray-600 dark:text-gray-300">Fill out the form below and I'll get back to you promptly</p>
+                  <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Send Me a Message</h2>
+                  <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>Fill out the form below and I'll get back to you promptly</p>
                 </div>
               </div>
 
@@ -329,20 +301,23 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                   >
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                    <label className={`block text-sm font-medium mb-3 ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
                       <span className="flex items-center gap-2">
-                        <User size={16} className="text-gray-500 dark:text-gray-400" />
+                        <User size={16} />
                         Your Name *
                       </span>
                     </label>
                     <input
                       type="text"
-                      id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-gray-800 dark:text-white"
+                      className={`w-full px-4 py-4 border rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all ${
+                        isDark 
+                          ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500' 
+                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      }`}
                       placeholder="John Doe"
                     />
                   </motion.div>
@@ -353,20 +328,23 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                    <label className={`block text-sm font-medium mb-3 ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
                       <span className="flex items-center gap-2">
-                        <MailIcon size={16} className="text-gray-500 dark:text-gray-400" />
+                        <MailIcon size={16} />
                         Email Address *
                       </span>
                     </label>
                     <input
                       type="email"
-                      id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-gray-800 dark:text-white"
+                      className={`w-full px-4 py-4 border rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all ${
+                        isDark 
+                          ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500' 
+                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      }`}
                       placeholder="john@example.com"
                     />
                   </motion.div>
@@ -379,16 +357,17 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                    Subject *
-                  </label>
+                  <label className={`block text-sm font-medium mb-3 ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Subject *</label>
                   <select
-                    id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-gray-800 dark:text-white"
+                    className={`w-full px-4 py-4 border rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all ${
+                      isDark 
+                        ? 'bg-gray-800 border-gray-700 text-white' 
+                        : 'bg-white border-gray-300 text-gray-900'
+                    }`}
                   >
                     <option value="">Select a subject</option>
                     <option value="project">Project Collaboration</option>
@@ -406,17 +385,18 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
                 >
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                    Message *
-                  </label>
+                  <label className={`block text-sm font-medium mb-3 ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Message *</label>
                   <textarea
-                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-4 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none bg-white dark:bg-gray-800 dark:text-white"
+                    className={`w-full px-4 py-4 border rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all resize-none ${
+                      isDark 
+                        ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500' 
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    }`}
                     placeholder="Tell me about your project, timeline, and requirements..."
                   />
                 </motion.div>
@@ -434,8 +414,8 @@ export default function Contact() {
                     disabled={isSubmitting}
                     className={`w-full group flex items-center justify-center gap-4 py-5 px-8 rounded-xl font-bold text-lg transition-all ${
                       isSubmitting 
-                        ? 'bg-gray-400 cursor-not-allowed' 
-                        : 'bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 hover:from-blue-700 hover:to-indigo-700 dark:hover:from-blue-600 dark:hover:to-indigo-600 shadow-lg hover:shadow-xl'
+                        ? 'bg-gray-700 cursor-not-allowed' 
+                        : 'bg-teal-600 hover:bg-teal-700 shadow-lg shadow-teal-600/25'
                     } text-white`}
                     whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                     whileTap={!isSubmitting ? { scale: 0.98 } : {}}
@@ -459,8 +439,8 @@ export default function Contact() {
                   </motion.button>
                   
                   <div className="flex items-center justify-center gap-2 mt-6">
-                    <Shield size={16} className="text-gray-400" />
-                    <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+                    <Shield size={16} className={isDark ? 'text-gray-500' : 'text-gray-400'} />
+                    <p className={`text-sm text-center ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
                       Your information is secure and will only be used to respond to your inquiry.
                     </p>
                   </div>
@@ -474,8 +454,8 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
-                <Zap className="text-yellow-500" size={24} />
+              <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <Zap className="text-teal-500" size={24} />
                 Common Types of Inquiries I Handle
               </h3>
               <div className="grid md:grid-cols-3 gap-6">
@@ -487,13 +467,13 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
-                    className={`group bg-gradient-to-br from-${item.color}-50 to-white dark:from-${item.color}-900/20 dark:to-gray-800 p-6 rounded-2xl border border-${item.color}-200 dark:border-${item.color}-700 hover:border-${item.color}-400 dark:hover:border-${item.color}-500 hover:shadow-xl transition-all`}
+                    className={`${isDark ? 'glass-card' : 'bg-white shadow-xl'} p-6 rounded-2xl ${isDark ? 'glow-border' : 'border border-gray-200'}`}
                   >
-                    <div className={`bg-${item.color}-100 dark:bg-${item.color}-900/30 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className="bg-teal-500/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-3">{item.title}</h4>
-                    <p className={`text-sm text-${item.color}-800 dark:text-${item.color}-300`}>
+                    <h4 className={`font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.title}</h4>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                       {item.description}
                     </p>
                   </motion.div>
@@ -507,7 +487,7 @@ export default function Contact() {
                 transition={{ delay: 0.4 }}
                 className="mt-10 text-center"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className={isDark ? 'text-gray-500' : 'text-gray-400'}>
                   Don't see what you're looking for? Feel free to reach out anyway!
                 </p>
               </motion.div>

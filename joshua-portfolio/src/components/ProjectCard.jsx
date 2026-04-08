@@ -1,74 +1,66 @@
-import { Github, ExternalLink, Play, Calendar, Code, ExternalLinkIcon } from 'lucide-react';
+import { Github, ExternalLink, Play, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 
 export default function ProjectCard({ project, onVideoClick, index }) {
   const [isHovered, setIsHovered] = useState(false);
+  const { isDark } = useTheme();
 
   return (
     <motion.div 
-      className="group relative cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
+      className="animated-card cursor-pointer group"
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => onVideoClick(project)}
     >
-      {/* Glow effect on hover */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-30 blur transition duration-500"></div>
-      
-      <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 group-hover:border-blue-300 dark:group-hover:border-blue-500 transition-all duration-300">
-        
-        {/* Image/Video Thumbnail */}
-        <div className="relative h-48 overflow-hidden">
+      <div className={`relative ${isDark ? 'glass-card' : 'bg-white shadow-xl'} overflow-hidden rounded-2xl`}>
+        {/* Image Section */}
+        <div className="relative h-52 overflow-hidden">
           {project.youtubeId ? (
             <img 
               src={`https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`}
-              alt={`${project.title} demo thumbnail`}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            />
-          ) : project.images && project.images[0] ? (
-            <img 
-              src={project.images[0]} 
               alt={project.title}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 flex items-center justify-center">
+            <div className={`w-full h-full ${isDark ? 'bg-teal-900/20' : 'bg-teal-100'} flex items-center justify-center`}>
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Play size={32} className="text-white" />
+                <div className={`w-16 h-16 ${isDark ? 'bg-teal-500/20' : 'bg-teal-200'} rounded-full flex items-center justify-center mx-auto mb-3`}>
+                  <Play size={28} className="text-teal-500" />
                 </div>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">Watch Demo</p>
+                <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Watch Demo</p>
               </div>
             </div>
           )}
           
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          {/* Play button overlay */}
+          {/* Play Button Overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div 
-              className="w-14 h-14 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-xl"
+              className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: isHovered ? 1 : 0.8, opacity: isHovered ? 1 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Play size={24} className="text-blue-600 dark:text-blue-400" fill="currentColor" />
+              <Play size={24} className="text-teal-600 ml-1" fill="currentColor" />
             </motion.div>
           </div>
           
-          {/* Category badge */}
+          {/* Category Badge */}
           <div className="absolute top-3 right-3">
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+            <span className="bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
               {project.category}
             </span>
           </div>
           
-          {/* Tech stack preview */}
+          {/* Tech Preview */}
           <div className="absolute bottom-3 left-3 flex gap-1">
             {project.techStack.slice(0, 3).map((tech, i) => (
               <span key={i} className="bg-black/70 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
@@ -78,99 +70,75 @@ export default function ProjectCard({ project, onVideoClick, index }) {
           </div>
         </div>
         
-        {/* Card Content */}
+        {/* Content */}
         <div className="p-5">
-          {/* Title & Status */}
           <div className="flex justify-between items-start mb-2">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
+            <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} group-hover:text-teal-500 transition-colors line-clamp-1`}>
               {project.title}
             </h3>
-            <span className={`text-xs px-2 py-1 rounded-full ${project.status === 'completed' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'}`}>
+            <span className={`text-xs px-2 py-1 rounded-full ${
+              project.status === 'completed' 
+                ? 'bg-green-500/20 text-green-500 border border-green-500/30' 
+                : 'bg-yellow-500/20 text-yellow-500 border border-yellow-500/30'
+            }`}>
               {project.status}
             </span>
           </div>
           
-          {/* Subtitle */}
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-1">
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-3 line-clamp-1`}>
             {project.subtitle}
           </p>
           
-          {/* Description */}
-          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-2 text-sm">
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4 line-clamp-2 text-sm`}>
             {project.description}
           </p>
           
-          {/* Tech stack chips */}
+          {/* Tech Chips */}
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.techStack.slice(0, 3).map((tech, index) => (
+            {project.techStack.slice(0, 3).map((tech, idx) => (
               <span 
-                key={index} 
-                className="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs px-2.5 py-1 rounded-full border border-blue-100 dark:border-blue-800 group-hover:border-blue-200 dark:group-hover:border-blue-500 transition-colors"
+                key={idx} 
+                className={`${isDark ? 'bg-teal-500/10 text-teal-400 border-teal-500/20' : 'bg-teal-100 text-teal-700 border-teal-200'} text-xs px-2.5 py-1 rounded-full border group-hover:border-teal-500/40 transition-colors`}
               >
                 {tech}
               </span>
             ))}
             {project.techStack.length > 3 && (
-              <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs px-2.5 py-1 rounded-full">
-                +{project.techStack.length - 3} more
+              <span className={`${isDark ? 'bg-gray-800 text-gray-400' : 'bg-gray-100 text-gray-600'} text-xs px-2.5 py-1 rounded-full`}>
+                +{project.techStack.length - 3}
               </span>
             )}
           </div>
           
-          {/* Footer with links and date */}
-          <div className="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+          {/* Footer */}
+          <div className={`flex justify-between items-center pt-3 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
             <div className="flex items-center gap-3">
-              <motion.a 
+              <a 
                 href={project.githubUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                className={`p-2 ${isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} rounded-lg transition-colors`}
                 onClick={(e) => e.stopPropagation()}
               >
-                <Github size={18} className="text-gray-700 dark:text-gray-300" />
-              </motion.a>
-              
+                <Github size={18} className={isDark ? 'text-gray-400' : 'text-gray-600'} />
+              </a>
               {project.liveUrl && (
-                <motion.a 
+                <a 
                   href={project.liveUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                  className={`p-2 ${isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} rounded-lg transition-colors`}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <ExternalLink size={18} className="text-gray-700 dark:text-gray-300" />
-                </motion.a>
-              )}
-              
-              {!project.liveUrl && project.githubUrl && (
-                <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                  Code Only
-                </span>
+                  <ExternalLink size={18} className={isDark ? 'text-gray-400' : 'text-gray-600'} />
+                </a>
               )}
             </div>
-            
-            <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
+            <div className={`flex items-center gap-1.5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
               <Calendar size={14} />
               <span className="text-xs">{project.date}</span>
             </div>
           </div>
-          
-          {/* View Details Button (appears on hover) */}
-          <motion.div 
-            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white dark:from-gray-800 to-transparent pt-8 pb-4 flex justify-center"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
-            transition={{ duration: 0.2 }}
-          >
-            <button className="flex items-center gap-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-md border border-blue-100 dark:border-blue-900 hover:shadow-lg transition-shadow">
-              <Play size={14} />
-              View Demo & Details
-            </button>
-          </motion.div>
         </div>
       </div>
     </motion.div>
