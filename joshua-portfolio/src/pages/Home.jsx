@@ -8,6 +8,7 @@ import ProjectModal from '../components/ProjectModal';
 import Experience from './Experience';
 import { Code2, Database, Wrench, Zap, Rocket, Target, Star, TrendingUp } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -57,12 +58,12 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <a href="/projects" className="animated-border-btn inline-flex">
-              View All Projects
-              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+<Link to="/projects" className="animated-border-btn inline-flex">
+  View All Projects
+  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+  </svg>
+</Link>
           </motion.div>
         </div>
       </section>
