@@ -107,9 +107,10 @@ export default function Hero() {
                 </span>
               </h1>
               <p className={`text-base md:text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-lg animate-fade-in animation-delay-200 mx-auto lg:mx-0`}>
-                Hi, I'm Joshua Tevera — a software engineer specializing in
-                React, Django and JavaScript. I build scalable, performant web
-                and mobile applications that users love.
+                  Hi, I'm Joshua Tevera — <span className="text-teal-500 font-medium">self-taught developer since 2022</span>. 
+  Currently a 2nd-year Software Engineering student at the Univesity of Zimbabwe
+   building production apps for real clients.
+  I specialize in React, Django and JavaScript.
               </p>
             </div>
 

@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 
 const experiences = [
   {
-    period: "2024 — Present",
+    period: "2025 — Present",
     role: "Full-Stack Developer",
     company: "Freelance & Personal Projects",
     description: "Building production-ready applications in healthcare, e-commerce, and education sectors. Specializing in AI integration and scalable system architecture.",
@@ -12,7 +12,7 @@ const experiences = [
     current: true,
   },
   {
-    period: "2023 — 2024",
+    period: "2024 — 2025",
     role: "AI Integration Engineer",
     company: "Project-Based",
     description: "Incorporated AI capabilities into practical applications, including AI-powered healthcare platforms and automated assessment systems using Google Gemini and Sentence-BERT.",
@@ -20,7 +20,7 @@ const experiences = [
     current: false,
   },
   {
-    period: "2022 — 2023",
+    period: "2023 — 2024",
     role: "Junior Developer",
     company: "Academic & Freelance",
     description: "Mastered core web development technologies and built foundational projects with modern architectures. Collaborated on team projects and version control.",
