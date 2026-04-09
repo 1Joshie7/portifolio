@@ -74,7 +74,7 @@ export const projects = [
     youtubeId: "wD0CYkX2Tdo",
     liveUrl: "",
     githubUrl: "https://github.com/1Joshie7/online-chat-store",
-    status: "nearly completed",
+    status: "completed",
     category: "full-stack",
     date: "Nov 2024",
     challenges: ["Integrating WhatsApp API", "Managing real-time chat sessions"],
