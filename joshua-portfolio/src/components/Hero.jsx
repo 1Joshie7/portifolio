@@ -18,8 +18,8 @@ export default function Hero() {
 
   const skills = [
     "React", "Next.js", "JavaScript", "Node.js", "GraphQL", "PostgreSQL",
-    "MongoDB", "Redis", "Docker", "AWS", "Tailwind CSS", "Docker", "Git",
-     "Python", "Django","React Native","GitHub","GitBucket","Post-man"
+    "MongoDB", "Redis", "AWS", "Tailwind CSS", "Docker", "Git",
+     "Python", "Django","React-Native","GitHub","GitBucket","Post-man"
   ];
 
   return (
