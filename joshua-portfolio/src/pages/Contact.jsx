@@ -260,7 +260,7 @@ export default function Contact() {
                   </motion.a>
                   
                   <motion.a
-                    href="#"
+                    href={socialLinks.linkedin}
                     className="flex-1 bg-teal-600 text-white p-4 rounded-xl hover:bg-teal-700 transition-all group flex items-center justify-center gap-3"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
