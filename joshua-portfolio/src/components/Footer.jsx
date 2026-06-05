@@ -21,11 +21,11 @@ export default function Footer() {
       href: `mailto:${socialLinks.email}`,
       label: 'Email',
     },
-    {
-      icon: <Linkedin size={20} />,
-      href: '#',
-      label: 'LinkedIn',
-    }
+{
+  icon: <Linkedin size={20} />,
+  href: socialLinks.linkedin,
+  label: 'LinkedIn',
+},
   ];
 
   return (
