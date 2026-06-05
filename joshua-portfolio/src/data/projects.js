@@ -1,4 +1,4 @@
-export const projects = [
+export const projects = [ 
   {
     id: 1,
     title: "Full-Stack Ecommerce Platform",
@@ -55,7 +55,7 @@ export const projects = [
     challenges: ["Implementing semantic similarity for accurate grading", "Managing concurrent exam sessions"],
     role: "Full-stack Developer"
   },
-    {
+  {
     id: 3,
     title: "Online Chat Store",
     subtitle: "Online Chat Store",
@@ -104,7 +104,6 @@ export const projects = [
     challenges: ["Implementing accurate location-based filtering", "Optimizing search performance"],
     role: "Full-stack Developer"
   },
-
   {
     id: 5,
     title: "Meet the Doctor Online",
@@ -128,5 +127,65 @@ export const projects = [
     date: "Dec 2024",
     challenges: ["Integrating AI health consultation", "Managing appointment scheduling"],
     role: "Full-stack Developer"
+  },
+  {
+    id: 6,
+    title: "Echo",
+    subtitle: "Anonymous AI Sexual Health Decision Simulator",
+    description: "A private, stateless web app helping university students navigate sensitive sexual health decisions anonymously — no login, no data stored, no judgement.",
+    longDescription: "Echo is a mobile-first web application that helps university students navigate sensitive sexual health decisions privately and without stigma. The system has no authentication and stores no user data — a deliberate ethical architecture decision, not a technical limitation. Users describe their situation in plain language, Google Gemini AI simulates two realistic outcome paths, and Echo delivers one clear action recommendation alongside local clinic details.",
+    techStack: ["Django", "React", "Vite", "Tailwind CSS", "Google Gemini API", "Django REST Framework", "Python"],
+    features: [
+      "Stateless, login-free design — no user data stored by ethical choice",
+      "Google Gemini AI simulates two realistic outcome paths per scenario",
+      "Single clear action recommendation generated per session",
+      "Local clinic details surfaced contextually within the AI response",
+      "Mobile-first responsive UI built with React and Tailwind CSS",
+      "Fully decoupled Django REST API backend and React/Vite frontend"
+    ],
+    youtubeId: "",
+    githubUrl: "https://github.com/1Joshie7/Echo",
+    liveUrl: null,
+    status: "completed",
+    category: "full-stack",
+    images: [],
+    challenges: [
+      "Designing a no-authentication, no-storage architecture as a principled ethical decision",
+      "Prompt engineering Gemini to produce two balanced, realistic outcome paths consistently",
+      "Handling sensitive health topics responsibly without storing any personally identifiable information"
+    ],
+    role: "Full-stack Developer",
+    date: "Jun 2026"
+  },
+  {
+    id: 7,
+    title: "AI Programming Grader",
+    subtitle: "Automated Code Assessment Platform",
+    description: "A team-built platform that automatically grades Python code submissions using Google Gemini AI, with plagiarism detection and personalised student feedback.",
+    longDescription: "Led backend engineering for a cross-functional team of five developers building an automated Python code assessment platform. The system allows lecturers to set programming assignments and have student submissions graded in real time by Google Gemini AI. The backend handles role-based authentication, database schema design, plagiarism detection through similarity analysis, and personalised AI-generated feedback delivered directly to student dashboards.",
+    techStack: ["Django", "React", "Django REST Framework", "JWT", "Google Gemini API", "PostgreSQL", "Python"],
+    features: [
+      "Google Gemini AI grades Python code submissions in real time",
+      "Personalised AI-generated feedback per student submission",
+      "Plagiarism detection through code similarity analysis",
+      "JWT-based role authentication for students and lecturers",
+      "Lecturer dashboard for assignment creation and grade review",
+      "Student dashboard showing results, scores, and feedback",
+      "Manual grade override for lecturer review and adjustment",
+      "Git feature branch workflow across a five-member team"
+    ],
+    youtubeId: "",
+    githubUrl: "https://github.com/1Joshie7/contingence-plan",
+    liveUrl: null,
+    status: "completed",
+    category: "full-stack",
+    images: [],
+    challenges: [
+      "Designing a database schema that cleanly separates lecturer, student, and submission data",
+      "Integrating Gemini AI to evaluate code correctness with meaningful, actionable feedback",
+      "Coordinating backend development across five developers using Git feature branches"
+    ],
+    role: "Backend Lead",
+    date: "Mar 2025"
   }
 ];
