@@ -134,7 +134,7 @@ export default function Hero() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href={socialLinks.linkedin}
                 className={`p-2 rounded-full ${isDark ? 'glass hover:bg-teal-500/10' : 'bg-gray-100 hover:bg-teal-100'} hover:text-teal-500 transition-all duration-300`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
